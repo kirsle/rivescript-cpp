@@ -1,0 +1,4 @@
+TODO
+
+As of May 12 2011, all RiveScript.cpp can do is read RS documents and load them
+into memory. I need to investigate regular expression libraries to proceed.
