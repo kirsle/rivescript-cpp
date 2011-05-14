@@ -8,9 +8,10 @@
 #include <fstream>
 #include <stdlib.h>
 #include <stdio.h>
+//#include <regex> // Requires TR-1 compatible compiler
 
 // Non-standard libraries that may need to be installed
-// #include "boost/regex.hpp"
+#include "boost/regex.hpp"
 
 #include "RiveScript.h"
 
@@ -87,7 +88,7 @@ bool RiveScript::loadDirectory (string folder) {
 	// Read files.
 	while ((dirp = readdir(dp)) != NULL) {
 		string file = string(dirp->d_name);
-		if (file == "." || file == "..") {
+		if (indexOf(file, ".") == 0) {
 			continue;
 		}
 		else if (file == "begin.rs") { // TODO be case insensitive
@@ -714,8 +715,7 @@ vector<string> RiveScript::split (string s, string delim) {
 }
 
 string RiveScript::replace (string source, string search, string replace) {
-	return source;
-/*	boost::regex pattern (search, boost::regex_constants::icase | boost::regex_constants::perl);
+	boost::regex pattern (search, boost::regex_constants::icase | boost::regex_constants::perl);
 	string output;
 	output = boost::regex_replace (source, pattern, replace);
 	return output;
@@ -736,5 +736,4 @@ string RiveScript::replace (string source, string search, string replace) {
 	}
 
 	return result;
-*/
 }

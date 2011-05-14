@@ -1,3 +1,3 @@
 #!/bin/bash
 
-g++ -I include -o bot bot.cpp RiveScript.h RiveScript.cpp
+g++ -Iinclude -lboost_regex -o bot bot.cpp RiveScript.h RiveScript.cpp
